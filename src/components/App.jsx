@@ -1,16 +1,24 @@
-export const App = () => {
+import { Component } from "react";
+import { PokemonForm } from "./Pokemon/PokemonForm";
+import { PokemonInfo } from "./Pokemon/PokemonImfo";
+
+export class App extends Component {
+state={
+  pokemon:""
+}
+
+onNameChange=(name)=>{
+  this.setState({
+    pokemon:name
+  })
+  console.log(name)
+}
+
+ render(){ 
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
+   <div>
+   <PokemonForm onNameChange={this.onNameChange}/>
+   <PokemonInfo pokemonName={this.state.pokemon}/>
+   </div>
+  )}
 };
